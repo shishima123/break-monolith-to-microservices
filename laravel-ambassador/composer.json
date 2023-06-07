@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.4|^8.0",
+        "ext-rdkafka": "*",
         "cartalyst/stripe": "^2.4",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
@@ -17,7 +18,7 @@
         "laravel/sanctum": "^2.9",
         "laravel/tinker": "^2.5",
         "predis/predis": "^1.1",
-        "ext-rdkafka": "*"
+        "shishima/kafka-queue": "dev-main"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.9",
@@ -63,5 +64,11 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ]
-    }
+    },
+    "repositories": [
+        {
+            "type" : "vcs",
+            "url": "https://github.com/shishima123/kafka-queue.git"
+        }
+    ]
 }
