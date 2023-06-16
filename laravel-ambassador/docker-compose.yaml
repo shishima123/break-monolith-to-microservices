@@ -11,7 +11,9 @@ services:
       - db
     command: 'php artisan serve --host=0.0.0.0'
     networks:
+      - default
       - proxynet
+      - users
 
   db:
     image: mysql:8
@@ -24,14 +26,14 @@ services:
     ports:
       - 33066:3306
     networks:
-      - proxynet
+      - default
 
   redis:
     image: redis
     ports:
       - 6379:6379
     networks:
-      - proxynet
+      - default
 
   mailhog:
     image: mailhog/mailhog
@@ -41,6 +43,7 @@ services:
       - 1025:1025 # smtp server
       - 8025:8025 # web ui
     networks:
+      - default
       - proxynet
 
   zookeper:
@@ -54,6 +57,7 @@ services:
       - "./storage/zookeeper/log:/var/lib/zookeeper/log"
       - "./storage/zookeeper/secrets:/var/lib/zookeeper/secrets"
     networks:
+      - default
       - proxynet
 
   kafka:
@@ -68,6 +72,7 @@ services:
       - "./storage/kafka/data:/var/lib/kafka/data"
       - "./storage/kafka/secrets:/var/lib/kafka/secrets"
     networks:
+      - default
       - proxynet
 
   kafdrop:
@@ -79,9 +84,13 @@ services:
     depends_on:
       - kafka
     networks:
+      - default
       - proxynet
 
 networks:
   proxynet:
     name: pub_sub_network
+  default:
+  users:
+    name: users
     external: true
