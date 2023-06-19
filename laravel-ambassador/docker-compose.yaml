@@ -28,13 +28,6 @@ services:
     networks:
       - default
 
-  redis:
-    image: redis
-    ports:
-      - 6379:6379
-    networks:
-      - default
-
   mailhog:
     image: mailhog/mailhog
     logging:
@@ -75,17 +68,17 @@ services:
       - default
       - proxynet
 
-  kafdrop:
-    image: obsidiandynamics/kafdrop
-    ports:
-      - "9000:9000"
-    environment:
-      KAFKA_BROKERCONNECT: "kafka:9092"
-    depends_on:
-      - kafka
-    networks:
-      - default
-      - proxynet
+#  kafdrop:
+#    image: obsidiandynamics/kafdrop
+#    ports:
+#      - "9000:9000"
+#    environment:
+#      KAFKA_BROKERCONNECT: "kafka:9092"
+#    depends_on:
+#      - kafka
+#    networks:
+#      - default
+#      - proxynet
 
 networks:
   proxynet:
