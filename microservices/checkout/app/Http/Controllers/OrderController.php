@@ -112,6 +112,7 @@ class OrderController extends Controller
         $data['ambassador_revenue'] = $order->ambassador_revenue;
 
         OrderCompleted::dispatch($data)->onQueue('email_topic');
+        OrderCompleted::dispatch($data)->onQueue('ambassador_topic');
 
         return [
             'message' => 'success'

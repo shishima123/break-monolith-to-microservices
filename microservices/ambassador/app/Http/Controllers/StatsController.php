@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Link;
 use App\Models\Order;
-use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
+use Shishima\UserService\UserService;
 
 class StatsController extends Controller
 {
