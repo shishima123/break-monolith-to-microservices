@@ -15,7 +15,7 @@ class ProductController extends Controller
             return $products;
         }
 
-        $products = Product::all();
+        $products = Product::latest()->get();
 
         \Cache::set('products_frontend', $products, 30 * 60); //30 min
 
@@ -27,7 +27,7 @@ class ProductController extends Controller
         $page = $request->input('page', 1);
 
         /** @var Collection $products */
-        $products = \Cache::remember('products_backend', 30 * 60, fn() => Product::all());
+        $products = \Cache::remember('products_backend', 30 * 60, fn() => Product::latest()->get());
 
         if ($s = $request->input('s')) {
             $products = $products

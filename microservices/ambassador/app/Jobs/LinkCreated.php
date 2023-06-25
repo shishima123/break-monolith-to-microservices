@@ -2,6 +2,8 @@
 
 namespace App\Jobs;
 
+use App\Models\Link;
+use App\Models\LinkProduct;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -16,7 +18,7 @@ class LinkCreated implements ShouldQueue
     public $data;
     public function __construct($data)
     {
-        $this->data = $data ;
+        $this->data = $data;
     }
 
     /**

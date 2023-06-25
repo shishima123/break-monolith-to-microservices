@@ -10,7 +10,7 @@ services:
       - ambassador_db
     command: 'php artisan serve --host=0.0.0.0'
     networks:
-      - proxynet
+      - kafka
       - ambassador
       - users
 
@@ -31,23 +31,25 @@ services:
     build: .
     depends_on:
       - ambassador_db
+    volumes:
+      - .:/app
     environment:
       CACHE_DRIVER: file
     command: 'php artisan queue:work'
     networks:
       - ambassador
-      - proxynet
+      - kafka
 
   redis:
     image: redis
     ports:
       - 6379:6379
     networks:
-      - default
+      - ambassador
 
 networks:
-  proxynet:
-    name: pub_sub_network
+  kafka:
+    name: kafka
     external: true
   users:
     name: users

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\LinkCreated;
 use App\Models\Link;
 use App\Models\LinkProduct;
 use Illuminate\Http\Request;
@@ -38,6 +39,7 @@ class LinkController extends Controller
         $array['link_products'] = $linkProducts;
 
         LinkCreated::dispatch($array)->onQueue('checkout_topic');
+        LinkCreated::dispatch($array)->onQueue('admin_topic');
 
         return $link;
     }

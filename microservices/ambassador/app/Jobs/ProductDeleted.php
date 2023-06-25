@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\Product;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -26,6 +27,6 @@ class ProductDeleted implements ShouldQueue
      */
     public function handle()
     {
-        //
+        Product::destroy($this->data['id']);
     }
 }
