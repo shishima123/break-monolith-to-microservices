@@ -2,7 +2,6 @@ version: '3.9'
 services:
   users_backend:
     build: .
-    container_name: users_ms
     volumes:
       - .:/app
     depends_on:
@@ -18,7 +17,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_PASSWORD: root
     ports:
-      - "33067:3306"
+      - "33068:3306"
     volumes:
       - ./storage/dbdata:/var/lib/mysql
     networks:

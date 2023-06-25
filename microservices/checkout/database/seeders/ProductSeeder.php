@@ -15,19 +15,20 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        $products = DB::connection('old_mysql')
-            ->table('products')->get();
-
-        foreach ($products as $product) {
-            Product::create([
-                'id' => $product->id,
-                'title' => $product->title,
-                'description' => $product->description,
-                'image' => $product->image,
-                'price' => $product->price,
-                'created_at' => $product->created_at,
-                'updated_at' => $product->updated_at,
-            ]);
-        }
+        // Using to sync old database to microservice database
+//        $products = DB::connection('old_mysql')
+//            ->table('products')->get();
+//
+//        foreach ($products as $product) {
+//            Product::create([
+//                'id' => $product->id,
+//                'title' => $product->title,
+//                'description' => $product->description,
+//                'image' => $product->image,
+//                'price' => $product->price,
+//                'created_at' => $product->created_at,
+//                'updated_at' => $product->updated_at,
+//            ]);
+//        }
     }
 }

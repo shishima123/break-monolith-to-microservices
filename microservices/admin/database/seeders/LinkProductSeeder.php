@@ -15,15 +15,16 @@ class LinkProductSeeder extends Seeder
      */
     public function run()
     {
-        $linkProducts = DB::connection('old_mysql')
-            ->table('link_products')->get();
-
-        foreach ($linkProducts as $linkProduct) {
-            LinkProduct::create([
-                'id' => $linkProduct->id,
-                'link_id' => $linkProduct->link_id,
-                'product_id' => $linkProduct->product_id,
-            ]);
-        }
+        // Using to sync old database to microservice database
+//        $linkProducts = DB::connection('old_mysql')
+//            ->table('link_products')->get();
+//
+//        foreach ($linkProducts as $linkProduct) {
+//            LinkProduct::create([
+//                'id' => $linkProduct->id,
+//                'link_id' => $linkProduct->link_id,
+//                'product_id' => $linkProduct->product_id,
+//            ]);
+//        }
     }
 }

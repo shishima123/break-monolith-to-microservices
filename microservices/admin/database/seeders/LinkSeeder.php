@@ -15,17 +15,18 @@ class LinkSeeder extends Seeder
      */
     public function run()
     {
-        $links = DB::connection('old_mysql')
-            ->table('links')->get();
-
-        foreach ($links as $link) {
-            Link::create([
-                'id' => $link->id,
-                'user_id' => $link->user_id,
-                'code' => $link->code,
-                'created_at' => $link->created_at,
-                'updated_at' => $link->updated_at,
-            ]);
-        }
+        // Using to sync old database to microservice database
+//        $links = DB::connection('old_mysql')
+//            ->table('links')->get();
+//
+//        foreach ($links as $link) {
+//            Link::create([
+//                'id' => $link->id,
+//                'user_id' => $link->user_id,
+//                'code' => $link->code,
+//                'created_at' => $link->created_at,
+//                'updated_at' => $link->updated_at,
+//            ]);
+//        }
     }
 }

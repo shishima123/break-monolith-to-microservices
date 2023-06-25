@@ -34,15 +34,15 @@ services:
     volumes:
       - ./storage/dbdata:/var/lib/mysql
     ports:
-      - "33068:3306"
+      - "33067:3306"
     networks:
       - checkout
 
 networks:
+  checkout:
   kafka:
     name: kafka
     external: true
-  checkout:
   users:
     name: users
     external: true

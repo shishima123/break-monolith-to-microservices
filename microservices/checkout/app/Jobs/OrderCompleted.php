@@ -32,6 +32,6 @@ class OrderCompleted implements ShouldQueue
      */
     public function handle()
     {
-        var_dump('mess from laravel-ambassador app123');
+        //
     }
 }
