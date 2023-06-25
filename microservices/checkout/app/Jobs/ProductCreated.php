@@ -27,7 +27,6 @@ class ProductCreated implements ShouldQueue
      */
     public function handle()
     {
-        var_dump($this->data);
         Product::create($this->data);
     }
 }

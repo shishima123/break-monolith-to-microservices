@@ -11,17 +11,19 @@ services:
     command: 'php artisan serve --host=0.0.0.0'
     networks:
       - checkout
-      - proxynet
+      - kafka
       - users
 
   checkout_queue:
     build: .
     depends_on:
       - checkout_db
+    volumes:
+      - .:/app
     command: 'php artisan queue:work'
     networks:
       - checkout
-      - proxynet
+      - kafka
 
   checkout_db:
     image: mysql:8
@@ -37,8 +39,8 @@ services:
       - checkout
 
 networks:
-  proxynet:
-    name: pub_sub_network
+  kafka:
+    name: kafka
     external: true
   checkout:
   users:
