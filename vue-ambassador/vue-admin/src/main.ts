@@ -5,7 +5,7 @@ import store from './store'
 import vuetify from './plugins/vuetify';
 import axios from "axios";
 
-axios.defaults.baseURL = 'http://localhost:8000/api/admin/';
+axios.defaults.baseURL = 'http://localhost:8004/api/admin/';
 axios.defaults.withCredentials = true;
 
 Vue.config.productionTip = false
