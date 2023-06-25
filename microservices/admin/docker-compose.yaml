@@ -11,17 +11,19 @@ services:
     command: 'php artisan serve --host=0.0.0.0'
     networks:
       - admin
-      - proxynet
+      - kafka
       - users
 
-#  admin_queue:
-#    build: .
-#    depends_on:
-#      - admin_db
-#    command: 'php artisan queue:work'
-#    networks:
-#      - admin
-#      - proxynet
+  admin_queue:
+    build: .
+    depends_on:
+      - admin_db
+    volumes:
+      - .:/app
+    command: 'php artisan queue:work'
+    networks:
+      - admin
+      - kafka
 
   admin_db:
     image: mysql:8
@@ -37,8 +39,8 @@ services:
       - admin
 
 networks:
-  proxynet:
-    name: pub_sub_network
+  kafka:
+    name: kafka
     external: true
   admin:
   users:
